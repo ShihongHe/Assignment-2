@@ -4,11 +4,25 @@ from tkinter.filedialog import asksaveasfilename
 from matplotlib import pyplot as plt
 import matplotlib
 import my_modules.io as io
-import raster
+import my_modules.raster as raster
+import os
      
 class Application(tk.Frame):
 
     def __init__(self, master=None):
+        """
+        
+
+        Parameters
+        ----------
+        master : TYPE, optional
+            DESCRIPTION. The default is None.
+
+        Returns
+        -------
+        None.
+
+        """
         super().__init__(master)
         self.master = master
         self.pack()
@@ -25,25 +39,29 @@ class Application(tk.Frame):
 
         # 创建子菜单
         menuFile = tk.Menu(menubar)
-        menuEdit = tk.Menu(menubar)
         menuHelp = tk.Menu(menubar)
 
         # 将子菜单加入到主菜单栏
         menubar.add_cascade(label="File", menu=menuFile)
-        menubar.add_cascade(label="Edit", menu=menuEdit)
         menubar.add_cascade(label="Help", menu=menuHelp)
 
         # 添加菜单项
-        menuFile.add_command(label="New", accelerator='ctrl+n', command=self.suitability)
-        menuFile.add_command(label='Open', accelerator='ctrl+o', command=self.openfile)
-        menuFile.add_command(label='Save', accelerator='ctrl+s', command=self.savefile)
+        menuFile.add_command(label='Show raster', accelerator='ctrl+s', command=self.openfile)
+        menuFile.add_command(label="Visualise the suitability", accelerator='ctrl+v', command=self.suitability)
         menuFile.add_separator()  # 添加分割线
         menuFile.add_command(label='Exit', accelerator='ctrl+e', command=self.exit)
-
+        menuHelp.add_command(label='Readme', accelerator='ctrl+r', command=self.open_readme)
         # 将主菜单栏加到根窗口
         self.master['menu'] = menubar
-
-
+        
+        
+        #增加快捷键的处理
+        self.master.bind('<Control-s>',lambda event:self.openfile())
+        self.master.bind('<Control-v>',lambda event:self.suitability())
+        self.master.bind('<Control-e>',lambda event:self.exit())
+        self.master.bind('<Control-r>',lambda event:self.open_readme())
+        
+        
     def suitability(self,judge=True):
         if judge:
             files=askopenfilenames()
@@ -96,12 +114,13 @@ class Application(tk.Frame):
         self.new.normalize()
         axes[-1].clear()
         axes[-1].imshow(self.new.environment)
-        axes[-1].set_title('suitability')
+        axes[-1].set_title('Site suitability')
         self.canvas.draw()
         
 
         
     def plot(self,fig,axes,judge=True):
+        
         self.canvas.get_tk_widget().destroy()
         
         self.canvas = matplotlib.backends.backend_tkagg.FigureCanvasTkAgg(fig, master=self.master)
@@ -126,7 +145,9 @@ class Application(tk.Frame):
             self.destroy()
         self.creatRaster(files)
         fig, axes = plt.subplots(nrows=1, ncols=len(files), figsize=(18,6))
-        
+        self.btn=tk.Button(self,text='Visualise the suitability',command=self.suitability)
+        self.btn.grid(row=0,column=0)
+        self.widgets.append(self.btn)
         self.plot(fig,axes)
         plt.close()
     
@@ -173,6 +194,9 @@ class Application(tk.Frame):
     def exit(self):
         self.master.quit()
         self.master.destroy()
+        
+    def open_readme(self):
+        os.startfile('..\..\..\README.md')
 
 if __name__ == '__main__':
     root = tk.Tk()
