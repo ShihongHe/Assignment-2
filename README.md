@@ -13,7 +13,6 @@ pip install -r requirements.txt
 python main.py
 ```
 ## Project structure
-<pre>
 ```
 Site-suitability/
 │
@@ -35,4 +34,3 @@ Site-suitability/
 │
 └── README.md
 ```
-</pre>
