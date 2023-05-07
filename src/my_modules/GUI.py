@@ -379,5 +379,5 @@ class Application(tk.Frame):
 
         """
         #open README.md
-        os.startfile('..\..\README.md')
+        os.startfile('..\README.md')
 
