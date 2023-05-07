@@ -5,3 +5,10 @@ The aim of this project is to develop software for a company producing rock aggr
 1. Install Python 3.8 or later. You can download and install it from the official Python website:[https://www.python.org/downloads/](https://www.python.org/downloads/).
 2. To access the project directory and install the required dependencies:
 ```
+cd src
+pip install -r requirements.txt
+```
+3. Run the application:
+```
+python main.py
+```
