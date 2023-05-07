@@ -12,3 +12,27 @@ pip install -r requirements.txt
 ```
 python main.py
 ```
+## Project structure
+<pre>
+```
+Site-suitability/
+│
+├── data/
+│   ├── input/
+│   │   ├── geology.txt
+│   │   ├── population.txt
+│   │   └── transport.txt
+│   └── output/
+│
+├── src/
+│   ├── main.py
+│   ├── requirements.txt
+│   └── my_modules/
+│       ├── GUI.py
+│       ├── io.py
+│       ├── raster.py
+│       └── test_raster.py
+│
+└── README.md
+```
+</pre>
