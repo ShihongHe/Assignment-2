@@ -1,3 +1,3 @@
 # Site suitability
-##Project Description
+## Project Description
 The aim of this project is to develop software for a company producing rock aggregates to help them explore three key factors for building a plant in the UK. The software will use raster data to analyse the suitability of each factor for the location of the plant. By assigning weights to each factor and adding up the weighted factors, the software will produce a comprehensive suitability map. A graphical user interface (GUI) is provided to allow the user to easily select the factor weights and view the visualisation of the suitability score in real time. Finally, the software saves a raster of the results as a file for further analysis and decision making.
