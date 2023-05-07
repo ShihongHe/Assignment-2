@@ -8,10 +8,6 @@ The aim of this project is to develop software for a company producing rock aggr
 cd src
 pip install -r requirements.txt
 ```
-3. Run the application:
-```
-python main.py
-```
 ## Project structure
 ```
 Site-suitability/
@@ -33,4 +29,9 @@ Site-suitability/
 │       └── test_raster.py
 │
 └── README.md
+```
+## Use
+###Run the application:
+```
+python main.py
 ```
