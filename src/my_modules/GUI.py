@@ -82,8 +82,8 @@ class Application(tk.Frame):
         None.
 
         """
-        #Select file
-        files=askopenfilenames()
+        #Select file from input
+        files=askopenfilenames(initialdir='../data/input')
         #File is empty error out of the loop
         while not files:
             tk.messagebox.showerror("Error", "Please select at least one file!")
@@ -123,8 +123,8 @@ class Application(tk.Frame):
         """
         #Follow the judge to determine whether to open the file for the first time or add the file
         if judge:
-            #Select file
-            files=askopenfilenames()
+            #Select file from input
+            files=askopenfilenames(initialdir='../data/input')
             #File is empty error out of the loop
             while not files:
                 tk.messagebox.showerror("Error", "Please select at least one file!")
@@ -307,9 +307,14 @@ class Application(tk.Frame):
 
         """
         #Select the file to save the file
-        self.filename = asksaveasfilename(title='Save as', initialdir='unnamed.txt',
-                                          filetypes=[('txt', '*.txt')],
+        self.filename = asksaveasfilename(title='Save as', initialdir='../data/output',
+                                          filetypes=[('txt', '*.txt'),('csv', '*.csv')],
                                           defaultextension='.txt')
+        #If no option to jump out of the loop
+        if not self.filename:
+            tk.messagebox.showerror("Error", "Select the file to be saved!")
+            return
+        
         #write data
         io.write_data(self.filename, self.new.environment)
                 
@@ -324,9 +329,13 @@ class Application(tk.Frame):
 
         """
         #Select the file to save the file
-        self.filename = asksaveasfilename(title='Save as', initialdir='unnamed.jpg',
-                                          filetypes=[('jpg', '*.jpg')],
+        self.filename = asksaveasfilename(title='Save as', initialdir='../data/output',
+                                          filetypes=[('jpg', '*.jpg'),('png','*.png'),('svg','*.svg')],
                                           defaultextension='.jpg')
+        # If no option to jump out of the loop
+        if not self.filename:
+            tk.messagebox.showerror("Error", "Select the file to be saved!")
+            return
         #save jpg
         plt.imshow(self.new.environment)
         plt.savefig(self.filename)
@@ -341,7 +350,7 @@ class Application(tk.Frame):
 
         """
         #Select file
-        files=askopenfilenames()
+        files=askopenfilenames(initialdir='../data/input')
         #File is empty error out of the loop
         while not files:
             tk.messagebox.showerror("Error", "Please select at least one file!")
