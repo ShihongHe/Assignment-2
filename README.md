@@ -20,7 +20,7 @@ Site-suitability/
 │   └── output/
 │
 ├── src/
-│   ├── main.py
+│   ├── main.py 
 │   ├── requirements.txt
 │   └── my_modules/
 │       ├── GUI.py
@@ -30,20 +30,33 @@ Site-suitability/
 │
 └── README.md
 ```
+### Document description
+- **geology.txt** - Raster data for geology
+- **population.txt** - Raster data for population
+- **transport.txt** - Raster data for transport
+- **main.py** - The entry point to the application, containing the Tkinter main loop.
+- **requirements.txt** - Lists the required packages for the application.
+- **GUI.py** - Contains the GUI implementation for the application.
+- **io.py** - Contains functions for reading and writing data.
+- **raster.py** - Contains the Raster class and associated functions for raster manipulation.
+- **test_raster.py** - Contains unit tests for the Raster class.
+- **README.md** - The documentation for the project.
+
 ## Use
 ### Run the application:
 ```
 python main.py
 ```
 ### GUI interface use
-1. Show raster images: Select one or more text files by clicking on **'Show raster'** under **'File'** in the menu bar, click on the **'Open'** button to read the files and the raster images will be displayed side by side in the canvas area.
-2. Generation of site suitability maps based on weights:Under the **'Show raster'** page click on **'Visualise the suitability'** or under **'File'** click on **'Visualise the suitability'** to select the file with the impact factor. After selecting the file you will see an image of the corresponding factor on the canvas as well as an image of the site suitability. By adjusting the sliders for the corresponding factors you can change the weights corresponding to each factor and reweight the site suitability image. There are also three buttons at the bottom, **'Save Image'**, **'Save File'** and **'Add'**. They correspond to the functions of saving the generated site suitability image (.jpg , .png and .svg formats are available), saving a text file (.txt and .csv formats are available) and adding a factor.
-3. Open the readme file：The Readme file can be opened by clicking on **'Readme'** under **'Help'** to view the file for help on how to use it.
-4. Exit：The GUI page can be exited by clicking on **'Exit'** under **'File'**.
-5. Shortcut keys:
+1. **Show raster images:** Select one or more text files by clicking on **'Show raster'** under **'File'** in the menu bar, click on the **'Open'** button to read the files and the raster images will be displayed side by side in the canvas area.
+2. **Generation of site suitability maps based on weights:** Under the **'Show raster'** page click on **'Visualise the suitability'** or under **'File'** click on **'Visualise the suitability'** to select the file with the impact factor. After selecting the file you will see an image of the corresponding factor on the canvas as well as an image of the site suitability. By adjusting the sliders for the corresponding factors you can change the weights corresponding to each factor and reweight the site suitability image. There are also three buttons at the bottom, **'Save Image'**, **'Save File'** and **'Add'**. They correspond to the functions of saving the generated site suitability image (.jpg , .png and .svg formats are available), saving a text file (.txt and .csv formats are available) and adding a factor.
+3. **Open the readme file:** The Readme file can be opened by clicking on **'Readme'** under **'Help'** to view the file for help on how to use it.
+4. **Exit:** The GUI page can be exited by clicking on **'Exit'** under **'File'**.
+5. **Shortcut keys:**
 - Ctrl+s: Show raster
 - Ctrl+v: Visualise the suitability
 - Ctrl+e: Exit
 - Ctrl+r: Readme
 ### Features
+
 
