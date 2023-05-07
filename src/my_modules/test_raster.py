@@ -66,5 +66,6 @@ class TestRaster(unittest.TestCase):
         self.assertEqual(sum_raster.environment, expected_result)
         self.assertEqual(sum_raster.name, 'sum')
 
+
 if __name__ == '__main__':
     unittest.main()
