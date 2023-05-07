@@ -37,6 +37,13 @@ python main.py
 ```
 ### GUI interface use
 1. Show raster images: Select one or more text files by clicking on **'Show raster'** under **'File'** in the menu bar, click on the **'Open'** button to read the files and the raster images will be displayed side by side in the canvas area.
-2. 根据权重生成场地适宜性地图：在**'Show raster'** 页面下点击**'Visualise the suitability'**或点击**'File'**下的**'Visualise the suitability'**选择影响因子的文件。选择文件后可以看到画布上出现对应的因子图像以及一个场地适宜性的图像。通过调整对应因子的滑块来改变每个因子对应的权重，重新加权计算场地适应性图像。同时下方还有三个按钮，分别为**'Save Image'**，**'Save File'**，**'Add'**。它们对应的功能是，保存生成的场地适宜性的图像(有.jpg , .png 和 .svg的格式可以选择)，保存文本文件(有.txt和.csv格式可以选择)和添加因子
+2. Generation of site suitability maps based on weights:Under the **'Show raster'** page click on **'Visualise the suitability'** or under **'File'** click on **'Visualise the suitability'** to select the file with the impact factor. After selecting the file you will see an image of the corresponding factor on the canvas as well as an image of the site suitability. By adjusting the sliders for the corresponding factors you can change the weights corresponding to each factor and reweight the site suitability image. There are also three buttons at the bottom, **'Save Image'**, **'Save File'** and **'Add'**. They correspond to the functions of saving the generated site suitability image (.jpg , .png and .svg formats are available), saving a text file (.txt and .csv formats are available) and adding a factor.
+3. Open the readme file：The Readme file can be opened by clicking on **'Readme'** under **'Help'** to view the file for help on how to use it.
+4. Exit：The GUI page can be exited by clicking on **'Exit'** under **'File'**.
+5. Shortcut keys:
+- Ctrl+s: Show raster
+- Ctrl+v: Visualise the suitability
+- Ctrl+e: Exit
+- Ctrl+r: Readme
 ### Features
 
