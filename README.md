@@ -75,6 +75,5 @@ python main.py
 - Ctrl+v: Visualise the suitability
 - Ctrl+e: Exit
 - Ctrl+r: Readme
-### Features
 
 
