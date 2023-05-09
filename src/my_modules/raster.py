@@ -38,13 +38,13 @@ class Raster:
             A new Raster instance with the multiplied values.
 
         """
-        a=[]
+        #Define a list of all zeros with the same dimension
+        result = [[0 for c in range(self.cols)] for r in range(self.rows)]
+        #Traversing the list
         for r in range(self.rows):
-            b=[]
             for c in range(self.cols):
-                b.append(self.environment[r][c]*weight)
-            a.append(b)
-        return Raster(a,'weight')
+                result[r][c]+=self.environment[r][c]*weight
+        return Raster(result,'multiply')
     
     def normalize(self):
         """
@@ -55,15 +55,16 @@ class Raster:
         None.
 
         """
+        #Find maximum and minimum values
         min_val = min(map(min, self.environment))
         max_val = max(map(max, self.environment))
-        
+        #Traversing the list
         for r in range(self.rows):
             for c in range(self.cols):
+                #Constant when maximum and minimum values are the same, standardised when different
                 if min_val!=max_val:
                     self.environment[r][c] = int((self.environment[r][c] - min_val) / (max_val - min_val) * 255)
                      
-       
     @staticmethod
     def add_rasters(dem_list):
         """
@@ -81,18 +82,68 @@ class Raster:
             A new Raster instance with the sum of the input rasters, or None if dimensions do not match.
 
         """
-        if len(dem_list) == 0:
-            return None
+        #Get the number of rows and columns
         rows = len(dem_list[0].environment)
         cols = len(dem_list[0].environment[0])
-        for d in dem_list:
-            if len(d.environment) != rows or len(d.environment[0]) != cols:
-                return None
+        #Define a list of all zeros with the same dimension
         result = [[0 for c in range(cols)] for r in range(rows)]
+        #Iterate through the list of all documents
         for d in dem_list:
             for r in range(rows):
                 for c in range(cols):
                     result[r][c] += d.environment[r][c]
-        return Raster(result, 'sum')
-       
+        return Raster(result, 'Site suitability')
+    
+    @staticmethod
+    def check_dimensions(rasters):
+        """
+        Check if all the rasters in the list have the same dimensions.
+
+        Parameters
+        ----------
+        rasters : list
+            A list of Raster instances.
+
+        Returns
+        -------
+        bool
+            True if all rasters have the same dimensions, False otherwise.
+
+        """
+        #Determine if it is empty
+        if not rasters:
+            return False
+        first_raster = rasters[0]
+        for raster in rasters[1:]:
+            #Determine if the number of rows and columns are the same
+            if raster.rows != first_raster.rows or raster.cols != first_raster.cols:
+                return False
+        return True
+    
+    
+    def check_data_integrity(self):
+        """
+        Checks the integrity of the raster data.
+
+        Returns
+        -------
+        bool
+            True if the raster data is valid, False otherwise.
+        """
+        #Check if self.environment is a non-empty list
+        if not isinstance(self.environment, list) or len(self.environment) == 0:
+            return False
+        
+        #Check that each row of the matrix is a list and of the same length
+        row_length = len(self.environment[0])
+        if not all(isinstance(row, list) and len(row) == row_length for row in self.environment):
+            return False
+        
+        # Check if each element of the matrix is an integer or a floating point number
+        for row in self.environment:
+            if not all(isinstance(value, (int, float)) for value in row):
+                return False
+            
+        # If all the above conditions are met, return True
+        return True
                 

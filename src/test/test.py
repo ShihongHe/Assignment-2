@@ -8,6 +8,7 @@ Created on Sat May  6 17:36:46 2023
 import unittest
 from my_modules.raster import Raster
 
+
 class TestRaster(unittest.TestCase):
 
     def setUp(self):
@@ -32,7 +33,7 @@ class TestRaster(unittest.TestCase):
         ]
         new_raster = self.raster.multiply(2)
         self.assertEqual(new_raster.environment, expected_result)
-        self.assertEqual(new_raster.name, 'weight')
+        self.assertEqual(new_raster.name, 'multiply')
 
     def test_normalize(self):
         self.raster.normalize()
@@ -64,7 +65,9 @@ class TestRaster(unittest.TestCase):
 
         sum_raster = Raster.add_rasters([raster1, raster2])
         self.assertEqual(sum_raster.environment, expected_result)
-        self.assertEqual(sum_raster.name, 'sum')
+        self.assertEqual(sum_raster.name, 'Site suitability')
+    
+        
 
 
 if __name__ == '__main__':
