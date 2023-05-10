@@ -130,7 +130,7 @@ class Application(tk.Frame):
         self.widgets.append(btn)
         self.plot(fig,axes)
         plt.close()
-        
+                
 
     def suitability(self,judge=True):
         """
@@ -188,7 +188,7 @@ class Application(tk.Frame):
             scale.grid(row=i, column=1)
             entry=tk.Entry(self, textvariable=var)
             entry.grid(row=i,column=2)
-            entry.bind("<KeyRelease>", lambda event, axes=axes: self.update(self.entry.get(), axes))
+            entry.bind("<KeyRelease>", lambda event, axes=axes: self.update(entry.get(), axes))
             #Add the widgets to the list of scales and widgets
             self.scales.append( scale)
             self.widgets.append( label)
@@ -234,7 +234,7 @@ class Application(tk.Frame):
         self.canvas.get_tk_widget().destroy()
         #Creat new canvas
         self.canvas = matplotlib.backends.backend_tkagg.FigureCanvasTkAgg(fig, master=self.master)
-        self.canvas.get_tk_widget().forget()
+        # self.canvas.get_tk_widget().forget()
         #Place canvas
         self.canvas._tkcanvas.pack(side=tk.TOP, fill=tk.BOTH, expand=1)
         
@@ -305,10 +305,15 @@ class Application(tk.Frame):
         None.
 
         """
-        self.multiply=[]     
+        self.multiply=[]
+        # scales_value=0
         for i in range(len(self.raster_list)):
             #multiply each raster by its corresponding weight and store it in Multiply
             self.multiply.append(self.raster_list[i].multiply(self.scales[i].get() * 0.01))
+            # scales_value+=self.scales[i].get() * 0.01
+            
+        # if scales_value>1:
+        #     tk.messagebox.showinfo("Message", "The sum of the weights does not equal one!")
         #Add up all the rasters
         self.new=raster.Raster.add_rasters(self.multiply)
         
