@@ -56,6 +56,8 @@ Site-suitability/
   - multiply: Multiplies each cell in the raster by the given weight and returns a new Raster instance.
   - normalize: Normalizes the raster data by scaling the values to the range [0, 255].
   - add_rasters: Adds the corresponding cells of a list of Raster instances and returns a new Raster instance. If the dimensions of the rasters do not match, returns None.
+  - check_dimensions: Check if all the rasters in the list have the same dimensions.
+  - check_data_integrity: Checks the integrity of the raster data.
 - **test_raster.py** - Contains unit tests for the Raster class.
 - **README.md** - The documentation for the project.
 
