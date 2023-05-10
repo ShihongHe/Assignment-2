@@ -23,11 +23,11 @@ Site-suitability/
 │   ├── main.py 
 │   ├── requirements.txt
 │   └── my_modules/
-│       ├── GUI.py
-│       ├── io.py
-│       ├── raster.py
+│   │   ├── GUI.py
+│   │   ├── io.py
+│   │   └── raster.py
+│   └── test  
 │       └── test_raster.py
-│
 └── README.md
 ```
 ### Document description
@@ -42,7 +42,7 @@ Site-suitability/
   - suitability: Displays a window with a slider for each loaded raster to adjust its weight, and displays a final raster calculated as the weighted sum of the loaded rasters. The user can add  rasters from the window. If the "judge" parameter is True, it prompts the user to select raster files to load. If the "judge" parameter is False, add the raster
   - plot: Plots the loaded rasters on the canvas.
   - creatRaster: Creates a Raster object for each file path in the "files" parameter and appends them to the raster_list attribute. If the "judge" parameter is True, it empties the raster_list before appending the new rasters.
-  - update: Calculates the new raster based on the updated weights of each raster and updates the canvas display accordingly.
+  - update: Calculates the new raster based on the updated weights of each raster and updates the canvas display accordingly.Bind the slider and input box to this function, which is triggered when the slider and input box values change.
   - destroy: Destroys all tkinter widgets.
   - savefile: Prompts the user to select a file to save the processed raster as a text file.
   - saveimage: Prompts the user to select a file to save the processed raster as a image.
@@ -77,6 +77,11 @@ python main.py
 - Ctrl+v: Visualise the suitability
 - Ctrl+e: Exit
 - Ctrl+r: Readme
+
+## Contributing and Maintenance
+If you'd like to contribute to this project or report any bugs, please create an issue on the GitHub repository or submit a pull request. The project is maintained by [Shihong He](mailto:gy22sh@leeds.ac.uk).
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
 
 
